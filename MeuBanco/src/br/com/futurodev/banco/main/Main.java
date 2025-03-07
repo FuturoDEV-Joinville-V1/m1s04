@@ -1,7 +1,7 @@
-package main;
+package br.com.futurodev.banco.main;
 
-import banco.Cliente;
-import banco.Conta;
+import br.com.futurodev.banco.models.Cliente;
+import br.com.futurodev.banco.models.Conta;
 import java.util.Scanner;
 
 public class Main {
@@ -28,12 +28,12 @@ public class Main {
     titularConta.sobrenome = sobrenomeTitular;
     titularConta.cpf = cpfTitular;
 
-    minhaConta.titular = titularConta;
-    minhaConta.saldo = saldoInicial;
+    minhaConta.setTitular(titularConta);
+    minhaConta.depositar(saldoInicial);
 
     System.out.printf(
         "A conta do cliente %s possui saldo de R$%.2f.%n",
-        minhaConta.titular.nome, minhaConta.saldo);
+        minhaConta.getTitular().nome, minhaConta.getSaldo());
 
     System.out.println("Digite um valor de saque:");
     double valorSaque = Double.parseDouble(entrada.nextLine());
@@ -42,7 +42,7 @@ public class Main {
 
     System.out.printf(
         "A conta do cliente %s possui saldo de R$%.2f.%n",
-        minhaConta.titular.nome, minhaConta.getSaldo());
+        minhaConta.getTitular().nome, minhaConta.getSaldo());
     /*
     minhaConta.depositar(75);
 
@@ -62,11 +62,11 @@ public class Main {
 
     System.out.printf(
         "A conta do cliente %s possui saldo de R$%.2f.%n",
-        outraConta.titular.nome, outraConta.getSaldo());
+        outraConta.getTitular().nome, outraConta.getSaldo());
 
     System.out.printf(
         "A conta do cliente %s possui saldo de R$%.2f.%n",
-        minhaConta.titular.nome, minhaConta.getSaldo());
+        minhaConta.getTitular().nome, minhaConta.getSaldo());
 
     System.out.println(minhaConta == outraConta);
     System.out.println(minhaConta);

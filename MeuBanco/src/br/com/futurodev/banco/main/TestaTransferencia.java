@@ -1,6 +1,6 @@
-package main;
+package br.com.futurodev.banco.main;
 
-import banco.Conta;
+import br.com.futurodev.banco.models.Conta;
 
 public class TestaTransferencia {
   public static void main(String[] args) {
