@@ -2,12 +2,15 @@ package br.senai.lab365.futurodev.caixaeletronico.main;
 
 import br.senai.lab365.futurodev.caixaeletronico.models.Cliente;
 import br.senai.lab365.futurodev.caixaeletronico.models.Conta;
+import br.senai.lab365.futurodev.caixaeletronico.repositories.ClienteRepository;
 import br.senai.lab365.futurodev.caixaeletronico.repositories.ContaRepository;
 import java.util.Scanner;
 
 public class Main {
   public static void main(String[] args) {
     ContaRepository contaRepository = new ContaRepository();
+    ClienteRepository clienteRepository = new ClienteRepository();
+
     System.out.println("Bem vindo ao caixa eletrônico!");
     Scanner entrada = new Scanner(System.in);
 
@@ -25,7 +28,7 @@ public class Main {
       operacao = Integer.parseInt(entrada.nextLine());
 
       switch (operacao) {
-        case 1 -> operacaoCadastraConta(entrada, contaRepository);
+        case 1 -> operacaoCadastraConta(entrada, contaRepository, clienteRepository);
         case 2 -> operacaoDeposito(entrada, contaRepository);
         case 3 -> operacaoSaque(entrada, contaRepository);
         case 4 -> operacaoTransferencia(entrada, contaRepository);
@@ -83,7 +86,8 @@ public class Main {
     contaDeposito.depositar(valorDeposito);
   }
 
-  private static void operacaoCadastraConta(Scanner entrada, ContaRepository contaRepository) {
+  private static void operacaoCadastraConta(
+      Scanner entrada, ContaRepository contaRepository, ClienteRepository clienteRepository) {
     Conta novaConta = new Conta();
     System.out.println("Digite um nome:");
     String nome = entrada.nextLine();
@@ -93,6 +97,7 @@ public class Main {
     String cpf = entrada.nextLine();
 
     Cliente novoCliente = new Cliente(nome, sobrenome, cpf);
+    clienteRepository.salvar(novoCliente);
     novaConta.setTitular(novoCliente);
 
     contaRepository.salvar(novaConta);

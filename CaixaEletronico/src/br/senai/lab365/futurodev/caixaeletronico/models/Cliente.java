@@ -1,6 +1,7 @@
 package br.senai.lab365.futurodev.caixaeletronico.models;
 
 public class Cliente {
+  private int id;
   private String nome;
   private String sobrenome;
   private String cpf;
@@ -12,6 +13,14 @@ public class Cliente {
   }
 
   public Cliente() {}
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
 
   public String getNome() {
     return nome;

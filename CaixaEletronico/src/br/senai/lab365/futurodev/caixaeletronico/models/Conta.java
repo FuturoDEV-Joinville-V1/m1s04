@@ -39,10 +39,10 @@ public class Conta {
       this.saldo -= valor;
       System.out.printf("Saque de R$%.2f realizado com sucesso.", valor);
       return true;
-    } else {
-      System.out.println("Saldo insuficiente.");
-      return false;
     }
+
+    System.out.println("Saldo insuficiente.");
+    return false;
   }
 
   public void transferir(Conta destino, double valor) {
